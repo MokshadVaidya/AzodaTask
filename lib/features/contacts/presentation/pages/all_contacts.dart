@@ -12,22 +12,28 @@ class ContactsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Retrieve the ContactsBloc instance using BlocProvider.
     final ContactsBloc contactsBloc = BlocProvider.of<ContactsBloc>(context);
 
     return Scaffold(
       backgroundColor: Colors.grey[300],
       floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(context, MaterialPageRoute(
-              builder: (ctx) {
-                return BlocProvider.value(
-                    value: contactsBloc, child: const AddContactPage());
-              },
-            ));
-          },
-          child: const Icon(Icons.add)),
+        onPressed: () {
+          // Navigate to the AddContactPage using MaterialPageRoute and provide ContactBloc using BlocProvider.
+          Navigator.push(context, MaterialPageRoute(
+            builder: (ctx) {
+              return BlocProvider.value(
+                value: contactsBloc,
+                child: const AddContactPage(),
+              );
+            },
+          ));
+        },
+        child: const Icon(Icons.add),
+      ),
       body: BlocConsumer<ContactsBloc, ContactsState>(
         listener: (context, state) {
+          // Listen for state changes and show a Snackbar if there's an error.
           if (state is ContactsError) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
@@ -38,6 +44,7 @@ class ContactsPage extends StatelessWidget {
         },
         builder: (context, state) {
           if (state is ContactsLoading) {
+            // Display a loading screen while contacts are being loaded.
             return const LoadingScreen(
               loadingText: "Loading Contacts...",
             );
@@ -50,7 +57,7 @@ class ContactsPage extends StatelessWidget {
                   floating: false,
                   pinned: true,
                   flexibleSpace: FlexibleSpaceBar(
-                    title: const Text(
+                    title: Text(
                       'Contacts',
                       style: kHeadTextStyle,
                     ),
@@ -65,10 +72,11 @@ class ContactsPage extends StatelessWidget {
                     (BuildContext context, int index) {
                       final contact = contacts[index];
                       return CustomListTile(
-                          name: contact.name,
-                          email: contact.email,
-                          number: contact.phoneNumber,
-                          address: contact.address);
+                        name: contact.name,
+                        email: contact.email,
+                        number: contact.phoneNumber,
+                        address: contact.address,
+                      );
                     },
                     childCount: contacts.length,
                   ),
@@ -76,8 +84,10 @@ class ContactsPage extends StatelessWidget {
               ],
             );
           } else if (state is ContactsError) {
+            // Display an error message if loading fails.
             return Text('Error: ${state.message}');
           } else {
+            // Display a message when there's no data.
             return const Text('No data');
           }
         },

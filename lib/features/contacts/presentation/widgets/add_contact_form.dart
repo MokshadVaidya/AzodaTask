@@ -23,7 +23,7 @@ class ContactForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
+        padding: EdgeInsets.symmetric(horizontal: kDefaultPadding),
         child: Form(
           key: _formKey,
           child: Column(
@@ -42,7 +42,7 @@ class ContactForm extends StatelessWidget {
                         "Hello.",
                         style: kHeadTextStyle.copyWith(color: kPrimaryColor),
                       ),
-                      const Text(
+                      Text(
                         "Let Us know you better !!",
                         style: kSubHeadTextStyle,
                       )
@@ -52,7 +52,7 @@ class ContactForm extends StatelessWidget {
               ),
               SingleChildScrollView(
                 child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: kDefaultPadding),
+                  margin: EdgeInsets.symmetric(vertical: kDefaultPadding),
                   decoration: kBoxDecoration,
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),

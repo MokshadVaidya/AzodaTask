@@ -18,13 +18,13 @@ class CustomListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.symmetric(
+      margin: EdgeInsets.symmetric(
         horizontal: kDefaultPadding,
         vertical: kDefaultPadding / 2,
       ),
       decoration: kBoxDecoration,
       child: Padding(
-        padding: const EdgeInsets.all(kDefaultPadding),
+        padding: EdgeInsets.all(kDefaultPadding),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -38,7 +38,7 @@ class CustomListTile extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(width: kDefaultPadding),
+            SizedBox(width: kDefaultPadding),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,6 +50,8 @@ class CustomListTile extends StatelessWidget {
                       fontSize: 20,
                     ),
                   ),
+
+                  // Display email, number and address only if they are not empty.
                   email != ''
                       ? CustomDetailText(name: email)
                       : const SizedBox(),

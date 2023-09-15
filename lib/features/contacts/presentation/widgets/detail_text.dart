@@ -15,7 +15,7 @@ class CustomDetailText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: kTextSpacing),
+      padding: EdgeInsets.only(bottom: kTextSpacing),
       child: Text(
         name,
         style: textStyle,
