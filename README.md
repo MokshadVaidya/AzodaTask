@@ -8,6 +8,8 @@ A simple Flutter application for managing contacts.
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Dependencies](#dependencies)
+- [Screenshots](#screenshots)
+
 
 
 ## Introduction
@@ -43,5 +45,10 @@ The project uses the following major dependencies:
 - Bloc: For state management using the Bloc pattern.
 - Get It: For dependency injection.
 - Lottie: For animations.
+
+## Screenshots
+
+![Screenshot 1](screenshots/screenshot1.png)
+![Screenshot 2](screenshots/screenshot2.png)
 
 
